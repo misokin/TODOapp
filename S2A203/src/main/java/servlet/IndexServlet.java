@@ -47,21 +47,6 @@ public class IndexServlet extends HttpServlet {
 		String[] todoList = { "Linuxテスト対策", "paiza", "TODOアプリ作成", "履歴書作成" };
 		String todo = todoList[index];
 	}
-	//		response.setContentType("text/html; charset=UTF-8");
-	//		PrintWriter out = response.getWriter();
-	//		out.println("<html>");
-	//		out.println("<head>");
-	//		out.println("<title>TODOアプリ出力画面</title>");
-	//		out.println("</head>");
-	//		out.println("<body>");
-	//		out.println("<h1>TODOアプリケーション</h1>");
-	//		out.println("<h2>一宮佑輔のTODOリスト</h2>");
-	//		out.println("<table border=1>");
-	//		out.println("<tr><th>No</th><th>重要度</th><th>内容</th><th>期日</th></tr>");
-	//		out.println("<tr><td>1</td><td>" + important + "</td><td>" + todo + "</td><td>" + today + "</td></tr>");
-	//		out.println("</table>");
-	//		out.println("</body>");
-	//		out.println("</html>");
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
