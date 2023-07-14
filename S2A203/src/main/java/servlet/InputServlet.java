@@ -30,7 +30,6 @@ public class InputServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.sendRedirect("input.jsp");
-		System.out.println("doGet");
 
 	}
 
@@ -42,18 +41,31 @@ public class InputServlet extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 		//リクエストパラメータを取得
-		String priority = request.getParameter("priority");
+
 		String content = request.getParameter("content");
 		String deadline = request.getParameter("deadline");
+		String priority = request.getParameter("priority");
 
-		String errorMsg = "";
+		String errorMsg3 = "";
+		String errorMsg4 = "";
 
 		//リクエストパラメータをチェック
 		if (content == null || content.length() == 0) {
-			errorMsg += "内容が入力されていません<br>";
+			//			errorMsg1 += "ユーザー名が入力されていません";
+			errorMsg3 += "内容が入力されていません";
+			request.setAttribute("errorMsg1", errorMsg3);
 		}
 		if (deadline == null || deadline.length() == 0) {
-			errorMsg += "期日が入力されていません<br>";
+			//			errorMsg2 += "パスワードが入力されていません";
+			errorMsg4 += "期日が入力されていません。";
+			request.setAttribute("errorMsg2", errorMsg4);
+
+		}
+
+		if (errorMsg3.length() >= 1 || errorMsg4.length() >= 1) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+			dispatcher.forward(request, response);
+			return;
 		}
 
 		//javaBeanのインスタンス生成
@@ -65,7 +77,8 @@ public class InputServlet extends HttpServlet {
 		request.setAttribute("todo", todo);
 
 		//フォワード処理
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/list.jsp");
+		RequestDispatcher dispatcher = request
+				.getRequestDispatcher("/WEB-INF/jsp/list.jsp");
 		dispatcher.forward(request, response);
 
 	}
