@@ -6,6 +6,15 @@ public class Todo implements Serializable {
 	private String priority;
 	private String content;
 	private String deadline;
+	private String no;
+
+	public String getNo() {
+		return no;
+	}
+
+	public void setNo(String no) {
+		this.no = no;
+	}
 
 	public Todo() {
 	}

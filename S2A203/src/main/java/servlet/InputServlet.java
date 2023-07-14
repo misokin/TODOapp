@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.Todo;
 
@@ -45,6 +46,7 @@ public class InputServlet extends HttpServlet {
 		String content = request.getParameter("content");
 		String deadline = request.getParameter("deadline");
 		String priority = request.getParameter("priority");
+		//String no = request.getParameter("no");
 
 		String errorMsg3 = "";
 		String errorMsg4 = "";
@@ -58,12 +60,12 @@ public class InputServlet extends HttpServlet {
 		if (deadline == null || deadline.length() == 0) {
 			//			errorMsg2 += "パスワードが入力されていません";
 			errorMsg4 += "期日が入力されていません。";
-			request.setAttribute("errorMsg2", errorMsg4);
+			request.setAttribute("errorMsg4", errorMsg4);
 
 		}
 
 		if (errorMsg3.length() >= 1 || errorMsg4.length() >= 1) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/input.jsp");
 			dispatcher.forward(request, response);
 			return;
 		}
@@ -73,7 +75,10 @@ public class InputServlet extends HttpServlet {
 		todo.setContent(content);
 		todo.setDeadline(deadline);
 		todo.setPriority(priority);
-		//リクエストスコープに値を保存
+		//todo.setNo(no);
+
+		//セッションスコープに値を保存 
+		HttpSession session = request.getSession();
 		request.setAttribute("todo", todo);
 
 		//フォワード処理
@@ -83,12 +88,3 @@ public class InputServlet extends HttpServlet {
 
 	}
 }
-
-//表示されるメッセージを設定
-
-//			String msg = todo + "を(" + deadline + ")までに登録しました。";
-//			if (errorMsg.length() != 0) {
-//				msg = errorMsg;
-//			}
-
-//html

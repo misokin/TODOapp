@@ -7,7 +7,13 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="./css/input.css">
 <link rel="shortcut icon" href="images/favicon.ico">
+<link rel ="stylesheet" href="./css/style.css">
+
 <title>TODOアプリ入力画面</title>
+<c:if test="${not empty errorMsg1}">
+<p class="error"><c:out value ="${errorMsg3}"/></p>
+<p class="error"><c:out value ="${errorMsg4}"/></p>
+</c:if>
 </head>
 
 

@@ -16,7 +16,7 @@
 <p class="error"><c:out value ="${errorMsg1}"/></p>
 <p class="error"><c:out value ="${errorMsg2}"/></p>
 </c:if>
-<form action="LoginServlet" method="post">
+<form action="/S2A203/LoginServlet" method="post">
 ユーザー名：<input type="text" name="name"><br>
 パスワード：<input type="password" name="pass"><br>
 <input type="submit" value="ログイン">
